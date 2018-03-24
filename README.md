@@ -21,7 +21,7 @@ POW/POS HYBRID
 Encourages users to keep coins in their wallets, ensuring extra profitability.
 
 TICKER: XDRA
-Algorith: Skein, POW+POS+MN
+Algorithm: Skein, POW+POS+MN
 
 Block time: 1 min
 
@@ -42,7 +42,7 @@ POW:
 
 99-199 999 blocks - 20 xDra
 
-2oo ooo - 999 999 blocks - 15 xDra
+200 000 - 999 999 blocks - 15 xDra
 
 1 000 000 - 1 999 999 - 8 xDra
 
