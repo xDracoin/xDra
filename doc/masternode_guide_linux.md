@@ -6,7 +6,7 @@
 * Windows 7 or higher, Mac OSX or linux with a wallet running (This will be your Cold wallet)
 * Ubuntu 14.04 or 16.04 running on a VPS such as Vultr, or other server (This will be your Hot wallet) running 24/7
 * Static IP Address
-* Port 49046 port forwarded from your router to your Ubuntu server
+* Port 18053 port forwarded from your router to your Ubuntu server
 * Basic Linux skills
 
 ---
@@ -18,8 +18,8 @@ After the setup is complete, this wallet doesn't have to run 24/7 and will be th
 
 ### 1. Install and open the xDra-Qt wallet on your machine.
 
-#### i.    Download the newest xDra-{OS}-{version}-qt.zip wallet from https://github.com/xDracoin/xDra/releases
-#### ii.   Extract the xDra-qt.exe from xDra-{OS}-{version}-qt.zip (e.g. for Windows)
+#### i.    Download the newest xDra-qt-{OS}-{version}.zip wallet from https://github.com/xDracoin/xDra/releases
+#### ii.   Extract the xDra-qt.exe from xDra-qt-{OS}-{version}.zip (e.g. for Windows)
 #### iii.  Start the new xDra-qt.exe
 #### iv.   Click Run if you get a warning about an unverified publisher:
 #### v.    If this is the first time you have started the wallet, you will be asked to enter a custom data directory. You can leave this default or change it to a directory that you want.
@@ -97,11 +97,11 @@ masternode outputs
 
 > This is an example of masternode.conf
 ```
-mn1 your_vps_ip_address:49046 your_masternode_key_output_from-masternode_genkey txhash_from-masternode_outputs Outputidx_from-masternode_outputs
+mn1 your_vps_ip_address:18053 your_masternode_key_output_from-masternode_genkey txhash_from-masternode_outputs Outputidx_from-masternode_outputs
 ```
 > The file will contain an example that is commented out(with a # in front), but based on the above values, I would add this line in:
 ```
-MN1 12.34.23.123:49046 s3AvlaVoy9Tr8j64bRdhUc2qE4t6fLQ6EyePnMEkV1UXHqcRrG 5e21q763e926c7cc0d2b2209e7eb93847039283eb595830942ebaf9037bb91ef 0
+MN1 12.34.23.123:18053 s3AvlaVoy9Tr8j64bRdhUc2qE4t6fLQ6EyePnMEkV1UXHqcRrG 5e21q763e926c7cc0d2b2209e7eb93847039283eb595830942ebaf9037bb91ef 0
 ```
 >   Where `12.34.23.123` is the external IP of the masternode server that will provide services to the network.
 
@@ -169,16 +169,16 @@ sudo echo '/mnt/1500MB.swap  none  swap  sw 0  0' >> /etc/fstab
 ```
 sudo ufw allow 22/tcp
 sudo ufw limit 22/tcp
-sudo ufw allow 49046/tcp
+sudo ufw allow 18053/tcp
 sudo ufw logging on
 sudo ufw --force enable
 ```
 
-If you are running the MasterNode server in Amazon AWS or another place where additional firewalls are in place, you need to allow incoming connections on port 49046/TCP
+If you are running the MasterNode server in Amazon AWS or another place where additional firewalls are in place, you need to allow incoming connections on port 18053/TCP
 
 
 
-### 5. Install the xDra CLI wallet. Always download the latest [release available](https://github.com/xDracoin/xDra/releases). The file will be xDra.zip. Next, unpack it
+### 5. Install the xDra CLI wallet. Always download the latest [release available](https://github.com/xDracoin/xDra/releases). The file will be xDra-linux-cli.zip. Next, unpack it
 
 If you are already running a `xDrad` on your server and want to upgrade it, stop the current one with:
 ```
@@ -193,11 +193,11 @@ For **Ubuntu 16.04***
 
 ```
 sudo apt-get install libzmq3-dev libminiupnpc-dev -y
-wget https://github.com/xDracoin/xDra/releases/download/x.x.x.x/xDra.zip
-unzip xDra.zip
-rm xDra.zip
-chmod +x ./xDra/src/xDrad
-sudo mv ./xDra/src/xDrad /usr/local/bin
+wget https://github.com/xDracoin/xDra/releases/download/x.x.x.x/xDra-linux-cli.zip
+unzip xDra-linux-cli.zip
+rm xDra-linux-cli.zip
+chmod +x ./xDra-linux-cli/xDrad
+sudo mv ./xDra-linux-cli/xDrad /usr/local/bin
 cd ~
 xDrad
 ```
@@ -215,28 +215,79 @@ Enter this wallet configuration data and change accordingly:
 ```
 rpcuser=<alphanumeric_rpc_username>
 rpcpassword=<alphanumeric_rpc_password>
-rpcport=5501
+rpcport=18054
 listen=1
 server=1
 daemon=1
 maxconnections=250
 masternode=1
-externalip=<ip_address_here>:49046
-masternodeaddr=<ip_address_here>:49046
+externalip=<ip_address_here>:18053
+masternodeaddr=<ip_address_here>:18053
 masternodeprivkey=<the_colw_wallet_genkey_value_here>
-addnode=209.250.229.114:49046
-addnode=185.36.188.175:49046
-addnode=185.188.183.240:49046
-addnode=46.73.9.44:49046
-addnode=93.100.113.177:49046
-addnode=94.102.124.227:49046
-addnode=105.226.120.16:49046
-addnode=95.26.204.174:49046
-addnode=77.45.26.62:49046
-addnode=94.181.5.169:49046
-addnode=128.79.7.184:49046
-addnode=37.25.104.18:49046
-addnode=91.214.117.26:49046
+addnode=104.205.177.205:18053
+addnode=109.106.139.185:18053
+addnode=109.195.179.12:18053
+addnode=109.95.229.159:18053
+addnode=110.168.34.149:18053
+addnode=113.180.106.60:18053
+addnode=120.158.196.211:18053
+addnode=144.217.90.42:18053
+addnode=167.99.1.93:18053
+addnode=173.176.95.92:18053
+addnode=176.106.194.193:18053
+addnode=176.210.199.81:18053
+addnode=176.37.255.49:18053
+addnode=178.140.46.42:18053
+addnode=180.183.54.119:18053
+addnode=185.107.64.202:18053
+addnode=185.218.234.75:18053
+addnode=188.116.128.51:18053
+addnode=188.213.31.22:18053
+addnode=188.234.213.132:18053
+addnode=199.247.12.72:18053
+addnode=217.182.173.104:18053
+addnode=217.42.248.97:18053
+addnode=218.57.95.62:18053
+addnode=223.207.44.224:18053
+addnode=37.14.32.165:18053
+addnode=37.187.140.168:18053
+addnode=37.79.203.164:18053
+addnode=45.76.212.128:18053
+addnode=46.161.2.92:18053
+addnode=46.227.143.115:18053
+addnode=46.4.88.76:4505
+addnode=46.73.9.44:18053
+addnode=47.139.54.235:18053
+addnode=47.157.245.152:18053
+addnode=49.0.68.10:18053
+addnode=5.129.142.97:18053
+addnode=5.65.84.84:18053
+addnode=54.36.5.66:18053
+addnode=54.39.66.152:18053
+addnode=58.8.181.217:18053
+addnode=71.187.236.176:18053
+addnode=73.110.144.206:18053
+addnode=77.68.213.55:18053
+addnode=78.189.60.98:18053
+addnode=78.36.193.51:18053
+addnode=78.63.9.212:18053
+addnode=79.20.96.89:18053
+addnode=80.212.158.47:18053
+addnode=82.64.3.134:18053
+addnode=84.244.7.219:18053
+addnode=84.55.45.14:18053
+addnode=85.106.13.210:18053
+addnode=85.15.94.1:18053
+addnode=85.95.182.114:18053
+addnode=86.10.46.26:18053
+addnode=88.99.201.58:4505
+addnode=89.243.150.165:18053
+addnode=90.100.26.38:18053
+addnode=94.180.238.198:18053
+addnode=94.249.192.89:18053
+addnode=95.79.50.147:18053
+addnode=95.89.45.93:18053
+addnode=97.103.17.167:18053
 ```
 You can right click in SHH (putty) to paste all of the above
 
@@ -246,28 +297,79 @@ This is a real example, based on the `genkey` obtained in the Cold(Part 1) walle
 ```
 rpcuser=xDrarpc
 rpcpassword=SeCurePassword23jkm32hkj23h423jkh324
-rpcport=5501
+rpcport=18054
 listen=1
 server=1
 daemon=1
 maxconnections=250
 masternode=1
-externalip=12.34.23.123:49046
-masternodeaddr=12.34.23.123:49046
+externalip=12.34.23.123:18053
+masternodeaddr=12.34.23.123:18053
 masternodeprivkey=s3AvlaVoy9Tr8j64bRdhUc2qE4t6fLQ6EyePnMEkV1UXHqcRrG
-addnode=209.250.229.114:49046
-addnode=185.36.188.175:49046
-addnode=185.188.183.240:49046
-addnode=46.73.9.44:49046
-addnode=93.100.113.177:49046
-addnode=94.102.124.227:49046
-addnode=105.226.120.16:49046
-addnode=95.26.204.174:49046
-addnode=77.45.26.62:49046
-addnode=94.181.5.169:49046
-addnode=128.79.7.184:49046
-addnode=37.25.104.18:49046
-addnode=91.214.117.26:49046
+addnode=104.205.177.205:18053
+addnode=109.106.139.185:18053
+addnode=109.195.179.12:18053
+addnode=109.95.229.159:18053
+addnode=110.168.34.149:18053
+addnode=113.180.106.60:18053
+addnode=120.158.196.211:18053
+addnode=144.217.90.42:18053
+addnode=167.99.1.93:18053
+addnode=173.176.95.92:18053
+addnode=176.106.194.193:18053
+addnode=176.210.199.81:18053
+addnode=176.37.255.49:18053
+addnode=178.140.46.42:18053
+addnode=180.183.54.119:18053
+addnode=185.107.64.202:18053
+addnode=185.218.234.75:18053
+addnode=188.116.128.51:18053
+addnode=188.213.31.22:18053
+addnode=188.234.213.132:18053
+addnode=199.247.12.72:18053
+addnode=217.182.173.104:18053
+addnode=217.42.248.97:18053
+addnode=218.57.95.62:18053
+addnode=223.207.44.224:18053
+addnode=37.14.32.165:18053
+addnode=37.187.140.168:18053
+addnode=37.79.203.164:18053
+addnode=45.76.212.128:18053
+addnode=46.161.2.92:18053
+addnode=46.227.143.115:18053
+addnode=46.4.88.76:4505
+addnode=46.73.9.44:18053
+addnode=47.139.54.235:18053
+addnode=47.157.245.152:18053
+addnode=49.0.68.10:18053
+addnode=5.129.142.97:18053
+addnode=5.65.84.84:18053
+addnode=54.36.5.66:18053
+addnode=54.39.66.152:18053
+addnode=58.8.181.217:18053
+addnode=71.187.236.176:18053
+addnode=73.110.144.206:18053
+addnode=77.68.213.55:18053
+addnode=78.189.60.98:18053
+addnode=78.36.193.51:18053
+addnode=78.63.9.212:18053
+addnode=79.20.96.89:18053
+addnode=80.212.158.47:18053
+addnode=82.64.3.134:18053
+addnode=84.244.7.219:18053
+addnode=84.55.45.14:18053
+addnode=85.106.13.210:18053
+addnode=85.15.94.1:18053
+addnode=85.95.182.114:18053
+addnode=86.10.46.26:18053
+addnode=88.99.201.58:4505
+addnode=89.243.150.165:18053
+addnode=90.100.26.38:18053
+addnode=94.180.238.198:18053
+addnode=94.249.192.89:18053
+addnode=95.79.50.147:18053
+addnode=95.89.45.93:18053
+addnode=97.103.17.167:18053
 ```
 
 The IP address(`12.34.23.123` in this example) will be different for you. Use the `ifconfig` command to find out your IP address, normally the address of the `eth0` interface.
