@@ -193,7 +193,7 @@ For **Ubuntu 16.04***
 
 ```
 sudo apt-get install libzmq3-dev libminiupnpc-dev -y
-wget https://github.com/xDracoin/xDra/releases/download/x.x.x.x/xDra-linux-cli.zip
+wget https://github.com/xDracoin/xDra/releases/download/vx.x.x.x/xDra-linux-cli.zip
 unzip xDra-linux-cli.zip
 rm xDra-linux-cli.zip
 chmod +x ./xDra-linux-cli/xDrad
